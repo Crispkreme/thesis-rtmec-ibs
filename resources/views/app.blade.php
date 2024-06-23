@@ -18,5 +18,11 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+
+        <script>
+            window.env = {
+                API_BASE_URI = {{ env(API_BASE_URI) }}
+            }
+        </script>
     </body>
 </html>
