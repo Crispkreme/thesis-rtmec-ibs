@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/admin/room/add-room', [AdminController::class, 'addRoom']);
+Route::get('/admin/room/get-all-room', [AdminController::class, 'getAllRoom']);

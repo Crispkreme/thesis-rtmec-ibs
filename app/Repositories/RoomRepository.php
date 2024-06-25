@@ -20,4 +20,9 @@ class RoomRepository implements RoomContract {
     {
         return $this->model->create($params);
     }
+
+    public function getAllRoom()
+    {
+        return $this->model->latest();
+    }
 }

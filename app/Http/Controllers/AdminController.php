@@ -28,14 +28,12 @@ class AdminController extends Controller
 
     public function addRoom(RoomUpdateRequest $request) {
 
-        dd($request);
-
         DB::beginTransaction();
 
         try {
 
             $params = $request->validated();
-
+            
             $room = $this->roomContract->addRoom($params);
 
             DB::commit();
@@ -48,7 +46,16 @@ class AdminController extends Controller
 
             Log::error('Error in addRoom: ' . $e->getMessage());
 
-            return response()->json(['error' => 'Failed to add room', 'message' => $e->getMessage()], 500);
+            return response()->json([
+                'error' => 'Failed to add room', 
+                'message' => $e->getMessage()
+            ], 500);
         }
+    }
+
+    public function getAllRoom() {
+        return response()->json([
+            'data' => $this->roomContract->getAllRoom()
+        ], 200);
     }
 }
