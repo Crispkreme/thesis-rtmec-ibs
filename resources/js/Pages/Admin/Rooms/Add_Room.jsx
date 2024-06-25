@@ -21,9 +21,7 @@ const Add_Room = React.forwardRef((props, ref) => {
             room_type: roomType,
         }).then((res) => {
             console.log(res);
-            if (res.data.success) {
-                closeModal();
-            }
+            closeModal();
         }).catch((error) => {
             console.error(error);
         });
