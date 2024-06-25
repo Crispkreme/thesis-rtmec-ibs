@@ -23,6 +23,11 @@ Route::get('admin/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 })->middleware(['adminChecker', 'auth', 'verified'])->name('admin.dashboard');
 
+// ADMIN ROOMS ROUTES
+Route::get('admin/room', function () {
+    return Inertia::render('Admin/Rooms/Room');
+})->middleware(['adminChecker', 'auth', 'verified'])->name('admin.room');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
