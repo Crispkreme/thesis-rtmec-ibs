@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'user@gmail.com',
             'password' => Hash::make('user'),
             'usertype' => 'user',
+            'is_tenant' => true,
         ]);
 
         DB::table('users')->insert([
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
             'usertype' => 'admin',
+            'is_tenant' => true,
         ]);
     }
 }

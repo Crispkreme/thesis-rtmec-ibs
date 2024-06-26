@@ -19,14 +19,21 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['userChecker', 'auth', 'verified'])->name('dashboard');
 
-Route::get('admin/dashboard', function () {
-    return Inertia::render('Admin/Dashboard');
-})->middleware(['adminChecker', 'auth', 'verified'])->name('admin.dashboard');
 
-// ADMIN ROOMS ROUTES
-Route::get('admin/room', function () {
-    return Inertia::render('Admin/Rooms/Room');
-})->middleware(['adminChecker', 'auth', 'verified'])->name('admin.room');
+
+// ADMIN GROUP ROUTES
+Route::middleware(['adminChecker', 'auth', 'verified'])->group(function() {
+
+    // FOR DASHBOARD
+    Route::get('admin/dashboard', function () {
+        return Inertia::render('Admin/Dashboard');
+    })->name('admin.dashboard');
+
+    // FOR ROOMS
+    Route::get('admin/room', function () {
+        return Inertia::render('Admin/Rooms/Room');
+    })->name('admin.room');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
