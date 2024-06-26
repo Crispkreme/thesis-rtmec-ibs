@@ -21,6 +21,9 @@ class UserSeeder extends Seeder
             'password' => Hash::make('user'),
             'usertype' => 'user',
             'is_tenant' => true,
+            'email_verified_at' => now(), 
+            'created_at' => now(), 
+            'updated_at' => now(), 
         ]);
 
         DB::table('users')->insert([
@@ -29,6 +32,9 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'),
             'usertype' => 'admin',
             'is_tenant' => true,
+            'email_verified_at' => now(), 
+            'created_at' => now(), 
+            'updated_at' => now(), 
         ]);
     }
 }
