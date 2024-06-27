@@ -18,9 +18,12 @@ class TenantRepository implements TenantContract {
 
     public function getAllTenant()
     {
-        $query = Tenant::query();
-        $tenants = $query->paginate(10)->onEachSide(1);
-
+        $tenants = Tenant::with(['tenant', 'tenantRoom'])
+                ->whereHas('tenant', function($query) {
+                    $query->where('usertype', '!=', 'admin');
+                })
+                ->paginate(10)
+                ->onEachSide(1);
         return $tenants;
     }
 

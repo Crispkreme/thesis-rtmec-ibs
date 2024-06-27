@@ -7,7 +7,6 @@ import { Link } from '@inertiajs/react';
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    console.log("user", user.usertype);
 
     return (
         <div className="min-h-screen bg-gray-100">

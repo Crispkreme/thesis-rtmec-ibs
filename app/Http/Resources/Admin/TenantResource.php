@@ -21,17 +21,18 @@ class TenantResource extends JsonResource
             'total_current' => $this->total_current,
             'previous_balance' => $this->previous_balance,
             'current_balance' => $this->current_balance,
-
-            'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
+    
+            'tenant_id' => $this->tenant->id,
+            'tenant_name' => $this->tenant->name,
+            'tenant_email' => $this->tenant->email,
+            'tenant_is_tenant' => $this->tenant->is_tenant,
+    
+            'tenant_room_id' => $this->tenantRoom->id,
+            'tenant_room_number' => $this->tenantRoom->room_number,
+            'tenant_room_type' => $this->tenantRoom->room_type,
+            'tenant_room_status' => $this->tenantRoom->room_status,
+    
+            'created_at' => $this->created_at ? (new Carbon($this->created_at))->format('Y-m-d') : null,
         ];
-
-        // $table->foreignId('tenant_id')->constrained('users');
-        // $table->foreignId('tenant_name')->constrained('users');
-        // $table->foreignId('is_tenant')->constrained('users');
-        // $table->foreignId('created_tenant_at')->constrained('users');
-
-        // $table->foreignId('tenant_room_id')->constrained('rooms');
-        // $table->foreignId('tenant_room_number')->constrained('rooms');
-        // $table->foreignId('tenant_room_status')->constrained('rooms');
     }
 }

@@ -18,10 +18,20 @@ class TenantController extends Controller
     }
 
     public function index() {
-        $rooms = $this->tenantContract->getAllTenant();
-        
+        $tenants = $this->tenantContract->getAllTenant();
+
         return Inertia('Admin/Tenants/Tenant', [
-            "$rooms" => TenantResource::collection($rooms),
+            'tenants' => json_encode([
+                'data' => TenantResource::collection($tenants),
+            ]),
         ]);
+    }
+
+    public function edit() {
+        dd('edit');
+    }
+
+    public function destroy() {
+        dd('destroy');
     }
 }

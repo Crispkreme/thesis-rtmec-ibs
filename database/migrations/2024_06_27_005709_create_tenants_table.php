@@ -13,16 +13,8 @@ return new class extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('tenant_id')->constrained('users');
-            $table->foreignId('tenant_name')->nullable()->constrained('users');
-            $table->foreignId('is_tenant')->nullable()->constrained('users');
-            $table->foreignId('created_tenant_at')->nullable()->constrained('users');
-
             $table->foreignId('tenant_room_id')->constrained('rooms');
-            $table->foreignId('tenant_room_number')->nullable()->constrained('rooms');
-            $table->foreignId('tenant_room_status')->nullable()->constrained('rooms');
-
             $table->string('total_voltage');
             $table->string('total_current');
             $table->string('previous_balance');
