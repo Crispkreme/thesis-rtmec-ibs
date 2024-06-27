@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ReadingController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Foundation\Application;
@@ -30,9 +33,13 @@ Route::middleware(['adminChecker', 'auth', 'verified'])->group(function() {
     })->name('admin.dashboard');
 
     // FOR ROOMS
-    Route::get('admin/room', function () {
-        return Inertia::render('Admin/Rooms/Room');
-    })->name('admin.room');
+    Route::get('admin/room', [RoomController::class, 'index'])->name('admin.room');
+
+    // FOR TENANTS
+    Route::get('admin/tenant', [TenantController::class, 'index'])->name('admin.tenant');
+
+    // FOR READINGS
+    Route::get('admin/reading', [ReadingController::class, 'index'])->name('admin.reading');
 });
 
 Route::middleware('auth')->group(function () {
