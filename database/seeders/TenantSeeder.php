@@ -14,7 +14,7 @@ class TenantSeeder extends Seeder
     public function run(): void
     {
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -22,7 +22,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -30,7 +30,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -38,7 +38,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -46,7 +46,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -54,7 +54,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -62,7 +62,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -70,7 +70,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -78,7 +78,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -86,7 +86,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -94,7 +94,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -102,7 +102,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -110,7 +110,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -118,7 +118,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -126,7 +126,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -134,7 +134,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -142,7 +142,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -150,7 +150,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -158,7 +158,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -166,7 +166,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -174,7 +174,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -182,7 +182,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -190,7 +190,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -198,7 +198,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -206,7 +206,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -214,7 +214,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -222,7 +222,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -230,7 +230,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -238,7 +238,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -246,7 +246,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -254,7 +254,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  
@@ -262,7 +262,7 @@ class TenantSeeder extends Seeder
             'current_balance' => rand(1, 20),  
         ]);
         DB::table('tenants')->insert([
-            'tenant_id' => 1,
+            'tenant_id' => rand(2, 11),
             'tenant_room_id' => rand(1, 10),
             'total_voltage' => rand(1, 20),  
             'total_current' => rand(1, 20),  

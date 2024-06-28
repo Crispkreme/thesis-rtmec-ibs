@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['userChecker', 'auth', 'verified'])->name('dashboard');
+})->middleware(['TenantChecker', 'auth', 'verified'])->name('dashboard');
 
 
 

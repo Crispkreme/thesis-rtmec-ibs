@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class UserChecker
+class TenantChecker
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class UserChecker
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->usertype != 'user') {
+        if(Auth::user()->usertype != 'tenant') {
             return redirect('/');
         }
 

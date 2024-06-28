@@ -18,24 +18,40 @@ class TenantController extends Controller
     }
 
     public function index() {
-        $tenants = $this->tenantContract->getAllTenant();
+
+        $searchData = request("searchData");
+        $searchStatus = request("searchStatus");
+        $searchField = request("sort_field", 'created_at');
+        $searchDirection = request("sort_direction", 'desc');
+
+        if ($searchData && $searchStatus) {
+            $queryResult = $this->tenantContract->searchTenantByNameAndRoomStatus($searchData, $searchStatus, $searchField, $searchDirection);
+        } elseif ($searchData) {
+            $queryResult = $this->tenantContract->searchTenantByName($searchData, $searchField, $searchDirection);
+        } elseif ($searchStatus) {
+            $queryResult = $this->tenantContract->searchTenantByRoomStatus($searchStatus, $searchField, $searchDirection);
+        } else {
+            $queryResult = $this->tenantContract->getAllTenant($searchField, $searchDirection);
+        }
+
         $responseData = [
-            'data' => TenantResource::collection($tenants),
+            'data' => TenantResource::collection($queryResult),
             'meta' => [
-                'current_page' => $tenants->currentPage(),
-                'from' => $tenants->firstItem(),
-                'last_page' => $tenants->lastPage(),
+                'current_page' => $queryResult->currentPage(),
+                'from' => $queryResult->firstItem(),
+                'last_page' => $queryResult->lastPage(),
                 'links' => [
-                    'first' => $tenants->url(1),
-                    'last' => $tenants->url($tenants->lastPage()),
-                    'prev' => $tenants->previousPageUrl(),
-                    'next' => $tenants->nextPageUrl(),
+                    'first' => $queryResult->url(1),
+                    'last' => $queryResult->url($queryResult->lastPage()),
+                    'prev' => $queryResult->previousPageUrl(),
+                    'next' => $queryResult->nextPageUrl(),
                 ],
-                'path' => $tenants->url($tenants->currentPage()),
-                'per_page' => $tenants->perPage(),
-                'to' => $tenants->lastItem(),
-                'total' => $tenants->total(),
+                'path' => $queryResult->url($queryResult->currentPage()),
+                'per_page' => $queryResult->perPage(),
+                'to' => $queryResult->lastItem(),
+                'total' => $queryResult->total(),
             ],
+            'queryParams' => $queryResult ?: null,
         ];
         return Inertia('Admin/Tenants/Tenant', [
             'tenants' => json_encode($responseData),
