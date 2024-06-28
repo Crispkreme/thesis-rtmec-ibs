@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 export default function Pagination({ meta }) {
     return (
         <nav className="text-center mt-4">
-            <ul className="pagination">
+            <ul className="pagination flex justify-between items-center">
                 {meta.links.prev && (
                     <li className="page-item">
                         <Link href={meta.links.prev} className="page-link" aria-label="Previous">

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained('users');
             $table->foreignId('tenant_room_id')->constrained('rooms');
-            $table->string('total_voltage');
-            $table->string('total_current');
-            $table->string('previous_balance');
-            $table->string('current_balance');
+            $table->integer('total_voltage');
+            $table->integer('total_current');
+            $table->integer('previous_balance');
+            $table->integer('current_balance');
             $table->timestamps();
         });
     }
