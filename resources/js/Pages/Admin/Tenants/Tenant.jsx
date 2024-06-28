@@ -1,12 +1,15 @@
 import Authenticated from '@/Layouts/AuthenticatedLayout';
+import Pagination from '@/Components/Pagination';
 import React from 'react';
-import { Head } from '@inertiajs/react';
-import { Link } from 'react-router-dom';
+import { Head, Link } from '@inertiajs/react';
 
 const Tenant = ({ auth, tenants }) => {
-    // Parse the JSON string to get the data array
+    
     const parsedTenants = JSON.parse(tenants);
     const { data } = parsedTenants;
+
+    const tenantsObj = JSON.parse(tenants);
+    const meta = tenantsObj.meta;
 
     const capitalizeWords = (string) => {
         return string
@@ -67,6 +70,7 @@ const Tenant = ({ auth, tenants }) => {
                                     ))}
                                 </tbody>
                             </table>
+                            <Pagination meta={meta} />
                         </div>
                     </div>
                 </div>
