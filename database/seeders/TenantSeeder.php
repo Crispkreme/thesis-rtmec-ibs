@@ -14,12 +14,260 @@ class TenantSeeder extends Seeder
     public function run(): void
     {
         DB::table('tenants')->insert([
-            'tenant_id' => 2,
-            'tenant_room_id' => 1,
-            'total_voltage' => '5',
-            'total_current' => '10',
-            'previous_balance' => '5',
-            'current_balance' => '5',
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
+        ]);
+        DB::table('tenants')->insert([
+            'tenant_id' => rand(2, 11),
+            'tenant_room_id' => rand(1, 10),
+            'total_voltage' => rand(1, 20),  
+            'total_current' => rand(1, 20),  
+            'previous_balance' => rand(1, 20),  
+            'current_balance' => rand(1, 20),  
         ]);
     }
 }

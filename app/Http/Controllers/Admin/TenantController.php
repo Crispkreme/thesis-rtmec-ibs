@@ -18,10 +18,51 @@ class TenantController extends Controller
     }
 
     public function index() {
-        $rooms = $this->tenantContract->getAllTenant();
-        
+
+        $searchData = request("searchData");
+        $searchStatus = request("searchStatus");
+        $searchField = request("sort_field", 'created_at');
+        $searchDirection = request("sort_direction", 'desc');
+
+        if ($searchData && $searchStatus) {
+            $queryResult = $this->tenantContract->searchTenantByNameAndRoomStatus($searchData, $searchStatus, $searchField, $searchDirection);
+        } elseif ($searchData) {
+            $queryResult = $this->tenantContract->searchTenantByName($searchData, $searchField, $searchDirection);
+        } elseif ($searchStatus) {
+            $queryResult = $this->tenantContract->searchTenantByRoomStatus($searchStatus, $searchField, $searchDirection);
+        } else {
+            $queryResult = $this->tenantContract->getAllTenant($searchField, $searchDirection);
+        }
+
+        $responseData = [
+            'data' => TenantResource::collection($queryResult),
+            'meta' => [
+                'current_page' => $queryResult->currentPage(),
+                'from' => $queryResult->firstItem(),
+                'last_page' => $queryResult->lastPage(),
+                'links' => [
+                    'first' => $queryResult->url(1),
+                    'last' => $queryResult->url($queryResult->lastPage()),
+                    'prev' => $queryResult->previousPageUrl(),
+                    'next' => $queryResult->nextPageUrl(),
+                ],
+                'path' => $queryResult->url($queryResult->currentPage()),
+                'per_page' => $queryResult->perPage(),
+                'to' => $queryResult->lastItem(),
+                'total' => $queryResult->total(),
+            ],
+            'queryParams' => $queryResult ?: null,
+        ];
         return Inertia('Admin/Tenants/Tenant', [
-            "$rooms" => TenantResource::collection($rooms),
+            'tenants' => json_encode($responseData),
         ]);
+    }
+
+    public function edit() {
+        dd('edit');
+    }
+
+    public function destroy() {
+        dd('destroy');
     }
 }

@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['userChecker', 'auth', 'verified'])->name('dashboard');
+})->middleware(['TenantChecker', 'auth', 'verified'])->name('dashboard');
 
 
 
@@ -37,6 +37,8 @@ Route::middleware(['adminChecker', 'auth', 'verified'])->group(function() {
 
     // FOR TENANTS
     Route::get('admin/tenant', [TenantController::class, 'index'])->name('admin.tenant');
+    Route::get('admin/edit/{id}', [TenantController::class, 'edit'])->name('admin.tenant.edit');
+    Route::get('admin/destroy/{id}', [TenantController::class, 'destroy'])->name('admin.tenant.destroy');
 
     // FOR READINGS
     Route::get('admin/reading', [ReadingController::class, 'index'])->name('admin.reading');
