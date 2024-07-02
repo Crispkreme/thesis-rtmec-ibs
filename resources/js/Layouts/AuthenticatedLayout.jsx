@@ -48,7 +48,7 @@ export default function Authenticated({ user, header, children }) {
     ];
 
     return (
-        <div className="h-screen w-full bg-white relative flex overflow-hidden">
+        <div className="h-screen w-full bg-[#e5e7eb] relative flex overflow-hidden">
             <aside className="h-full w-16 flex flex-col space-y-10 items-center justify-center relative bg-gray-800 text-white pt-16">
                 {user.usertype === "admin" ? adminLinks.map((link, index) => (
                     <div key={index} className={navLinkClass}>
