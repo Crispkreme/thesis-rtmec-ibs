@@ -23,10 +23,21 @@ class RoomRepository implements RoomContract {
 
     public function getAllRoom()
     {
-        $query = Room::query();
-        $rooms = $query->paginate(10)->onEachSide(1);
+        return $this->model->where('isDeleted', false)
+        ->paginate(10)
+        ->onEachSide(1);
+    }
 
-        return $rooms;
+    public function deleteRoom($id)
+    {
+        $room = $this->model->findOrFail($id);
+
+        if ($room) {
+            $room->isDeleted = true;
+            $room->save();
+        }
+        
+        return $room;
     }
 
 }

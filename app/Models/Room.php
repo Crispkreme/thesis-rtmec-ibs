@@ -15,5 +15,6 @@ class Room extends Model
         'room_status',
         'occupants',
         'occupant_status',
+        'isDeleted',
     ];
 }
