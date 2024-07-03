@@ -26,10 +26,12 @@ class RoomUpdateRequest extends FormRequest
         return [
             'room_number' => [
                 'required', 'string', 'max:255',
-                Rule::unique(Room::class),
+                Rule::unique('rooms'), 
             ],
             'room_type' => 'nullable|string|in:single,bedspacer',
             'room_status' => 'nullable|string|in:available,occupied',
+            'occupants' => 'integer',
+            'occupant_status' => 'nullable|string|in:complete,incomplete',
         ];
     }
 }

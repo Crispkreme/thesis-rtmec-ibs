@@ -18,11 +18,29 @@ class RoomController extends Controller
     }
 
     public function index() {
-
+        
         $rooms = $this->roomContract->getAllRoom();
         
         return Inertia('Admin/Rooms/Room', [
-            "$rooms" => RoomResource::collection($rooms),
+            "rooms" => RoomResource::collection($rooms),
         ]);
+    }
+
+    public function deleteRoom($id) {
+
+        $this->roomContract->deleteRoom($id);
+        $rooms = $this->roomContract->getAllRoom();
+
+        $responseData = [
+            'data' => RoomResource::collection($rooms),
+        ];
+
+        return Inertia('Admin/Rooms/Room', [
+            'rooms' => json_encode($responseData),
+        ]);
+    }
+
+    public function updateRoom($id) {
+        dd($id);
     }
 }

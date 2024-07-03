@@ -19,6 +19,11 @@ class ReadingResource extends JsonResource
             'id' => $this->id,
             'voltage' => $this->voltage,
             'current' => $this->current,
+
+            'room_id' => $this->room->id,
+            'room_number' => $this->room->room_number,
+            'room_status' => $this->room->room_status,
+            'created_at' => $this->created_at ? (new Carbon($this->created_at))->format('Y-m-d') : null,
         ];
     }
 }

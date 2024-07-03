@@ -20,6 +20,9 @@ class RoomResource extends JsonResource
             'room_number' => $this->room_number,
             'room_type' => $this->room_type,
             'room_status' => $this->room_status,
+            'occupants' => $this->occupants,
+            'occupant_status' => $this->occupant_status,
+            'isDeleted' => $this->isDeleted,
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
         ];
     }

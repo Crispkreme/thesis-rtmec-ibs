@@ -21,14 +21,4 @@ class Reading extends Model
     {
         return $this->belongsTo(Room::class, 'room_id');
     }
-
-    public function roomNumber()
-    {
-        return $this->belongsTo(Room::class, 'room_number');
-    }
-
-    public function roomStatus()
-    {
-        return $this->belongsTo(Room::class, 'room_status');
-    }
 }

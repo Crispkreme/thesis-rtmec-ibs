@@ -20,9 +20,9 @@ class ReadingController extends Controller
     public function index() {
 
         $readings = $this->readingContract->getAllReading();
-        
+
         return Inertia('Admin/Readings/Reading', [
-            "$readings" => ReadingResource::collection($readings),
+            "readings" => ReadingResource::collection($readings),
         ]);
     }
 }
