@@ -19,7 +19,7 @@ class ReadingRepository implements ReadingContract {
     public function getAllReading()
     {
         $query = Reading::query();
-        $readings = $query->paginate(10)->onEachSide(1);
+        $readings = $query->get();
 
         return $readings;
     }

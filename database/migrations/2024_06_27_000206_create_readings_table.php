@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('voltage');
             $table->string('current');
             $table->foreignId('room_id')->constrained('rooms');
-            $table->foreignId('room_number')->nullable()->constrained('rooms');
-            $table->foreignId('room_status')->nullable()->constrained('rooms');
             $table->timestamps();
         });        
     }
