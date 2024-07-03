@@ -13,5 +13,7 @@ class Room extends Model
         'room_number',
         'room_type',
         'room_status',
+        'occupants',
+        'occupant_status',
     ];
 }

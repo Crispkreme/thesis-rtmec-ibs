@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('room_number');
             $table->enum('room_type', ['single', 'bedspacer'])->nullable();
             $table->string('room_status')->default('available');
+            $table->integer('occupants')->default(0);
+            $table->enum('occupant_status', ['complete', 'incomplete'])->nullable();
             $table->timestamps();
         });
     }

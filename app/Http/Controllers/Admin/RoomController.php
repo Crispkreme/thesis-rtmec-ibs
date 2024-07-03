@@ -22,7 +22,7 @@ class RoomController extends Controller
         $rooms = $this->roomContract->getAllRoom();
         
         return Inertia('Admin/Rooms/Room', [
-            "$rooms" => RoomResource::collection($rooms),
+            "rooms" => RoomResource::collection($rooms),
         ]);
     }
 }

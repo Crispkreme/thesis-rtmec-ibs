@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component';
 import Breadcrumb from '@/Components/Breadcrumb';
 import CardLayout from '@/Components/CardLayout';
 import StatusBadge from '@/Components/StatusBadge';
+import { format } from 'date-fns';
 
 const columns = [
   {
@@ -29,7 +30,7 @@ const columns = [
   },
   {
     name: 'Date',
-    selector: row => row.created_at,
+    selector: row => format(new Date(row.created_at), 'MMMM dd, yyyy'),
     sortable: true,
   },
 ];
