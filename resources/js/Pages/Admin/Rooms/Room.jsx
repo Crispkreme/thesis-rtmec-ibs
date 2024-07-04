@@ -22,8 +22,6 @@ const Room = ({ auth, rooms }) => {
   const [notification, setNotification] = useState(null);
   const [tableData, setTableData] = useState(rooms.data);
 
-  console.log("rowToUpdate", rowToUpdate);
-
   const handleUpdate = (row) => {
     setRowToUpdate(row);
     setUpdateModalOpen(true);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('contact_number');
             $table->string('usertype')->default('tenant');
             $table->boolean('is_tenant')->default(false); 
             $table->timestamp('email_verified_at')->nullable();

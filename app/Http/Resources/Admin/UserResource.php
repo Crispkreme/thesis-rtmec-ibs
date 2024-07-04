@@ -20,6 +20,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'usertype' => $this->usertype,
+            'contact_number' => $this->contact_number,
             'is_tenant' => $this->is_tenant,
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
         ];
