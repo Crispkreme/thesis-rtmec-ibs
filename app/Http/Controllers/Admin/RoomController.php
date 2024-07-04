@@ -18,7 +18,7 @@ class RoomController extends Controller
     }
 
     public function index() {
-
+        
         $rooms = $this->roomContract->getAllRoom();
         
         return Inertia('Admin/Rooms/Room', [
@@ -38,5 +38,9 @@ class RoomController extends Controller
         return Inertia('Admin/Rooms/Room', [
             'rooms' => json_encode($responseData),
         ]);
+    }
+
+    public function updateRoom($id) {
+        dd($id);
     }
 }

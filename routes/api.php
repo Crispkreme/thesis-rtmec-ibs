@@ -15,3 +15,5 @@ Route::get('/admin/room/get-all-room', [AdminController::class, 'getAllRoom']);
 
 // FOR ROOM FUNCTIONALITY
 Route::get('/admin/room/delete/{id}', [RoomController::class, 'deleteRoom'])->name('admin.room.delete');
+Route::get('/admin/room/update/{id}', [RoomController::class, 'updateRoom'])->name('admin.room.update');
+Route::get('/admin/room', [RoomController::class, 'index'])->name('api.admin.room');

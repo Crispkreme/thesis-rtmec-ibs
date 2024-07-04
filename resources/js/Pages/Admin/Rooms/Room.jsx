@@ -1,7 +1,7 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import React, { useState } from 'react';
 import { Head } from '@inertiajs/react';
 import DataTable from 'react-data-table-component';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import Breadcrumb from '@/Components/Breadcrumb';
 import CardLayout from '@/Components/CardLayout';
 import StatusBadge from '@/Components/StatusBadge';
@@ -10,17 +10,45 @@ import { format } from 'date-fns';
 import { HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi';
 import DeleteModal from '@/Components/DeleteModal';
 import Notification from '@/Components/Notification';
+import UpdateModal from '@/Components/UpdateModal';
 
 const Room = ({ auth, rooms }) => {
-  
-  const data = rooms.data;
+
   const [filterText, setFilterText] = useState('');
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [rowToDelete, setRowToDelete] = useState(null);
+  const [rowToUpdate, setRowToUpdate] = useState(null);
   const [notification, setNotification] = useState(null);
+  const [tableData, setTableData] = useState(rooms.data);
+
+  console.log("rowToUpdate", rowToUpdate);
 
   const handleUpdate = (row) => {
-    console.log('Update row:', row);
+    setRowToUpdate(row);
+    setUpdateModalOpen(true);
+  };
+
+  const handleConfirmUpdate = (updatedRow) => {
+    
+    if (!updatedRow) {
+      console.error('No updated row data.');
+      return;
+    }
+
+    const { id } = updatedRow;
+
+    apiService
+      .post(`/admin/room/update/${id}`, updatedRow)
+      .then((res) => {
+        setNotification('Room updated successfully');
+        setUpdateModalOpen(false);
+        setRowToUpdate(null);
+        fetchRooms();
+      })
+      .catch((error) => {
+        console.error('Error updating room:', error);
+      });
   };
 
   const handleDelete = (row) => {
@@ -30,6 +58,7 @@ const Room = ({ auth, rooms }) => {
 
   const handleConfirmDelete = () => {
     if (!rowToDelete) {
+      console.error('No row to delete.');
       return;
     }
 
@@ -41,6 +70,7 @@ const Room = ({ auth, rooms }) => {
         setNotification('Room deleted successfully');
         setDeleteModalOpen(false);
         setRowToDelete(null);
+        fetchRooms(); // Assuming fetchRooms fetches the updated data
       })
       .catch((error) => {
         console.error('Error deleting room:', error);
@@ -50,6 +80,17 @@ const Room = ({ auth, rooms }) => {
   const handleCloseModal = () => {
     setDeleteModalOpen(false);
     setRowToDelete(null);
+  };
+
+  const fetchRooms = () => {
+    apiService
+      .get('/admin/room')
+      .then((response) => {
+        setTableData(response.data.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching rooms:', error);
+      });
   };
 
   const columns = [
@@ -107,7 +148,7 @@ const Room = ({ auth, rooms }) => {
     },
   ];
 
-  const filteredItems = data.filter(
+  const filteredItems = tableData.filter(
     (item) =>
       item.room_number.toLowerCase().includes(filterText.toLowerCase()) ||
       item.room_type.toLowerCase().includes(filterText.toLowerCase()) ||
@@ -164,9 +205,13 @@ const Room = ({ auth, rooms }) => {
         message="Are you sure you want to delete this room?"
       />
 
-      <Notification 
-        message={notification} 
-        onClose={() => setNotification(null)} 
+      <Notification message={notification} onClose={() => setNotification(null)} />
+
+      <UpdateModal
+        isOpen={updateModalOpen}
+        onConfirm={handleConfirmUpdate}
+        onCancel={handleCloseModal}
+        row={rowToUpdate}
       />
 
     </AuthenticatedLayout>

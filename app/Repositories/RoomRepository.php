@@ -24,8 +24,7 @@ class RoomRepository implements RoomContract {
     public function getAllRoom()
     {
         return $this->model->where('isDeleted', false)
-        ->paginate(10)
-        ->onEachSide(1);
+        ->get();
     }
 
     public function deleteRoom($id)
