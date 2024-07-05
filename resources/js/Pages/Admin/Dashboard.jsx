@@ -143,8 +143,7 @@ export default function Dashboard({ auth }) {
                             </span>
                             Since last month
                         </p>
-                    </div>
-                    <div className="w-full" id="new-products-chart" style={{ minHeight: '155px' }}>
+
                         <BarChartComponent />
                     </div>
                 </div>
@@ -159,22 +158,26 @@ export default function Dashboard({ auth }) {
                             </span>
                             Since last month
                         </p>
-                    </div>
-                    <div className="w-full" id="new-products-chart" style={{ minHeight: '155px' }}>
+
                         <BarChartComponent />
                     </div>
                 </div>
                 <div className='p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800'>
                     <div className="w-full">
-                        <h3 className="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Audience by age</h3>
+                        <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">Users</h3>
+                        <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
+                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
+                            <span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
+                                <HiArrowNarrowUp />
+                                3.4%
+                            </span>
+                            Since last month
+                        </p>
                         <LineChartComponent />
                     </div>
                 </div>
             </div>
-
-            <div className='p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 mt-5'>
-                {/* Table here */}
-            </div>
+            
         </AuthenticatedLayout>
     );
 }
