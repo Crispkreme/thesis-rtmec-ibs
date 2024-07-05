@@ -4,8 +4,9 @@ import { Head } from '@inertiajs/react';
 import { HiOutlineUserGroup, HiArrowNarrowUp, HiChevronDown } from 'react-icons/hi';
 import { AiOutlineFileSync, AiOutlineFileProtect, AiOutlineSolution, AiOutlineProfile } from 'react-icons/ai';
 import Breadcrumb from '@/Components/Breadcrumb';
-import DashboardCard from '@/Components/DashboardCard';
-import MixedChart from '@/Components/MixedChart'; 
+import AreaChartComponent from '@/Components/Charts/AreaChartComponent';
+import BarChartComponent from '@/Components/Charts/BarChartComponent';
+import LineChartComponent from '@/Components/Charts/LineChartComponent';
 
 export default function Dashboard({ auth }) {
 
@@ -99,6 +100,9 @@ export default function Dashboard({ auth }) {
                             12.5%
                             <HiArrowNarrowUp />
                         </div>
+                    </div>
+                    <div style={{ minHeight: '435px' }}>
+                        <AreaChartComponent />
                     </div>
                 </div>
                 <div className='p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800'>
@@ -351,7 +355,7 @@ export default function Dashboard({ auth }) {
                         </p>
                     </div>
                     <div className="w-full" id="new-products-chart" style={{ minHeight: '155px' }}>
-                        {/* chart here */}
+                        <BarChartComponent />
                     </div>
                 </div>
                 <div className='items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800'>
@@ -367,13 +371,13 @@ export default function Dashboard({ auth }) {
                         </p>
                     </div>
                     <div className="w-full" id="new-products-chart" style={{ minHeight: '155px' }}>
-                        {/* chart here */}
+                        <BarChartComponent />
                     </div>
                 </div>
                 <div className='p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800'>
                     <div className="w-full">
                         <h3 className="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Audience by age</h3>
-                        {/* chart here */}
+                        <LineChartComponent />
                     </div>
                 </div>
             </div>

@@ -83,6 +83,7 @@ export default function Authenticated({ user, header, children }) {
                 </header>
 
                 <div className='relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900'>
+                    
                     <main className="overflow-hidden bg-gray-50 dark:bg-gray-900">
                         
                         <div className='px-4 pt-6'>
