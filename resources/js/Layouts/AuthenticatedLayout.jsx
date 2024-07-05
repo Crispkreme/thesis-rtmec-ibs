@@ -68,7 +68,7 @@ export default function Authenticated({ user, header, children }) {
             <div className="w-full h-full flex flex-col">
                 <header className="h-16 w-full flex items-center relative justify-between px-5 bg-gray-800 fixed top-0 left-0 right-0 z-10">
                     <div className="flex items-center space-x-4">
-                        <div className="flex flex-col items-end ">
+                        <div className="flex flex-col items-end text-white">
                             <div className="text-md font-medium">RTMEC</div>
                             <div className="text-sm font-regular">IOT</div>
                         </div>
@@ -104,7 +104,7 @@ export default function Authenticated({ user, header, children }) {
                         </div>
 
                         <p class="my-10 text-sm text-center text-gray-500">
-                            © 2019-2023 <a href="https://flowbite.com/" class="hover:underline" target="_blank">Flowbite.com</a>. All rights reserved.
+                            © 2024 <a href="#" class="hover:underline" target="_blank">Real-Time Monitoring of Energy Consumption using IoT-based Meters </a>. All rights reserved.
                         </p>
 
                     </main>

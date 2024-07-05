@@ -6,11 +6,13 @@ use App\Contracts\RoomContract;
 use App\Contracts\TenantContract;
 use App\Contracts\ReadingContract;
 use App\Contracts\UserContract;
+use App\Contracts\ReceiptContract;
 
 use App\Repositories\RoomRepository;
 use App\Repositories\TenantRepository;
 use App\Repositories\ReadingRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\ReceiptRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
         TenantContract::class => TenantRepository::class,
         ReadingContract::class => ReadingRepository::class,
         UserContract::class => UserRepository::class,
+        ReceiptContract::class => ReceiptRepository::class,
     ];
 
     /**
