@@ -7,8 +7,10 @@ import Breadcrumb from '@/Components/Breadcrumb';
 import AreaChartComponent from '@/Components/Charts/AreaChartComponent';
 import BarChartComponent from '@/Components/Charts/BarChartComponent';
 import LineChartComponent from '@/Components/Charts/LineChartComponent';
+import { useReactTable } from '@tanstack/react-table';
 
 export default function Dashboard({ auth }) {
+
     const data1 = [3, 1, 5, 8, 20, 10, 15, 30];
     const data2 = [2, 3, 10, 5, 5, 9, 10, 10];
     const total = data1.map((num, idx) => num + data2[idx]);
@@ -136,7 +138,7 @@ export default function Dashboard({ auth }) {
                     <div className="w-full">
                         <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">New products</h3>
                         <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
-                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
+                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400 pb-5">
                             <span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                                 <HiArrowNarrowUp />
                                 12.5%
@@ -151,7 +153,7 @@ export default function Dashboard({ auth }) {
                     <div className="w-full">
                         <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">Users</h3>
                         <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
-                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
+                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400 pb-5">
                             <span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                                 <HiArrowNarrowUp />
                                 3.4%
@@ -166,7 +168,7 @@ export default function Dashboard({ auth }) {
                     <div className="w-full">
                         <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">Users</h3>
                         <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
-                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
+                        <p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400 pb-5">
                             <span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                                 <HiArrowNarrowUp />
                                 3.4%
