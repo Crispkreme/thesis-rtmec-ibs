@@ -23,25 +23,29 @@ Route::get('/dashboard', function () {
 })->middleware(['TenantChecker', 'auth', 'verified'])->name('dashboard');
 
 
-
 // ADMIN GROUP ROUTES
-Route::middleware(['adminChecker', 'auth', 'verified'])->group(function() {
+Route::middleware(['adminChecker', 'auth', 'verified'])
+->prefix('admin')
+->as('admin.')
+->group(function() {
 
     // FOR DASHBOARD
-    Route::get('admin/dashboard', function () {
+    Route::get('dashboard', function () {
         return Inertia::render('Admin/Dashboard');
-    })->name('admin.dashboard');
+    })->name('dashboard');
 
     // FOR ROOMS
-    Route::get('admin/room', [RoomController::class, 'index'])->name('admin.room');
+    Route::get('room', [RoomController::class, 'index'])->name('room');
 
     // FOR TENANTS
-    Route::get('admin/tenant', [TenantController::class, 'index'])->name('admin.tenant');
-    Route::get('admin/edit/{id}', [TenantController::class, 'edit'])->name('admin.tenant.edit');
-    Route::get('admin/destroy/{id}', [TenantController::class, 'destroy'])->name('admin.tenant.destroy');
+    Route::get('tenant', [TenantController::class, 'index'])->name('tenant');
+    Route::get('edit/{id}', [TenantController::class, 'edit'])->name('tenant.edit');
+    Route::get('destroy/{id}', [TenantController::class, 'destroy'])->name('tenant.destroy');
 
     // FOR READINGS
-    Route::get('admin/reading', [ReadingController::class, 'index'])->name('admin.reading');
+    Route::get('reading', [ReadingController::class, 'index'])->name('reading');
+
+    // FOR RECEIPT
 });
 
 Route::middleware('auth')->group(function () {
