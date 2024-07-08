@@ -18,10 +18,10 @@ class ReceiptResource extends JsonResource
         return [
             'id' => $this->id,
             'owner_id' => $this->owner->id,
-            'reading_id' => $this->reading->id,
-            'receipt_status' => $this->receipt_status,
-
+            'owner_name' => $this->owner->name,
             'tenant_id' => $this->tenant->id,
+            'tenant_name' => $this->tenant->tenant->name,
+            'receipt_status' => $this->receipt_status,
             'total_amount' => $this->tenant->current_balance,
             'balance' => $this->tenant->balance,
 

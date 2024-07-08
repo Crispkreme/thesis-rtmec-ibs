@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if ($request->user()->usertype === 'admin') {
             return redirect()->intended(route('admin.dashboard'));
         } else {
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('api.tenant.index'));
         }
     }
 
