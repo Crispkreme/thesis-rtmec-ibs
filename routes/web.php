@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ReadingController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Foundation\Application;
@@ -46,6 +47,7 @@ Route::middleware(['adminChecker', 'auth', 'verified'])
     Route::get('reading', [ReadingController::class, 'index'])->name('reading');
 
     // FOR RECEIPT
+    Route::get('payment', [ReceiptController::class, 'index'])->name('payment');
 });
 
 Route::middleware('auth')->group(function () {
