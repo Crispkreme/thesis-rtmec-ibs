@@ -41,8 +41,8 @@ export default function Authenticated({ user, header, children }) {
     ];
 
     const userLinks = [
-        { href: "#", icon: HiOutlineHome },
-        { href: "#", icon: HiOutlineCreditCard },
+        { href: route('api.tenant.index'), icon: HiOutlineHome },
+        { href: route('api.tenant.payment'), icon: HiOutlineCreditCard },
         { href: "#", icon: HiOutlineCog },
         { href: "#", icon: HiLogout }
     ];

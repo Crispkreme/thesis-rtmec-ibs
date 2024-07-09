@@ -16,12 +16,29 @@ class ReceiptRepository implements ReceiptContract {
         $this->model = $model;
     }
 
-    // public function getAllReading()
-    // {
-    //     $query = Reading::query();
-    //     $readings = $query->get();
+    public function getReceiptByUserID($id, $paginate = true, $perPage = 10) {
+        $query = $this->model
+            ->with(['owner', 'tenant'])
+            ->where('tenant_id', $id);
+    
+        if ($paginate) {
+            return $query->paginate($perPage);
+        } else {
+            return $query->get();
+        }
+    }
 
-    //     return $readings;
-    // }
-
+    public function getReceiptStatusByUserID($id, $paginate = true, $perPage = 10, $status) {
+        $query = $this->model
+            ->with(['owner', 'tenant'])
+            ->where('tenant_id', $id)
+            ->where('receipt_status', $status);
+    
+        if ($paginate) {
+            return $query->paginate($perPage);
+        } else {
+            return $query->get();
+        }
+    }
+    
 }
