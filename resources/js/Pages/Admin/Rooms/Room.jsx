@@ -1,216 +1,68 @@
 import React, { useState } from 'react';
 import { Head } from '@inertiajs/react';
-import DataTable from 'react-data-table-component';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import RoomCard from '@/Components/RoomCard';
 import Breadcrumb from '@/Components/Breadcrumb';
 import CardLayout from '@/Components/CardLayout';
-import StatusBadge from '@/Components/StatusBadge';
-import apiService from '@/Services/apiServices';
-import { format } from 'date-fns';
-import { HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi';
-import DeleteModal from '@/Components/DeleteModal';
-import Notification from '@/Components/Notification';
-import UpdateModal from '@/Components/UpdateModal';
+import { HiArrowNarrowUp } from 'react-icons/hi';
+import RoomDataCard from '@/Components/RoomDataCard';
 
-const Room = ({ auth, rooms }) => {
-
-  const [filterText, setFilterText] = useState('');
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [updateModalOpen, setUpdateModalOpen] = useState(false);
-  const [rowToDelete, setRowToDelete] = useState(null);
-  const [rowToUpdate, setRowToUpdate] = useState(null);
-  const [notification, setNotification] = useState(null);
-  const [tableData, setTableData] = useState(rooms.data);
-
-  const handleUpdate = (row) => {
-    setRowToUpdate(row);
-    setUpdateModalOpen(true);
-  };
-
-  const handleConfirmUpdate = (updatedRow) => {
-    
-    if (!updatedRow) {
-      console.error('No updated row data.');
-      return;
-    }
-
-    const { id } = updatedRow;
-
-    apiService
-      .post(`/admin/room/update/${id}`, updatedRow)
-      .then((res) => {
-        setNotification('Room updated successfully');
-        setUpdateModalOpen(false);
-        setRowToUpdate(null);
-        fetchRooms();
-      })
-      .catch((error) => {
-        console.error('Error updating room:', error);
-      });
-  };
-
-  const handleDelete = (row) => {
-    setRowToDelete(row);
-    setDeleteModalOpen(true);
-  };
-
-  const handleConfirmDelete = () => {
-    if (!rowToDelete) {
-      console.error('No row to delete.');
-      return;
-    }
-
-    const { id } = rowToDelete;
-
-    apiService
-      .get(`/admin/room/delete/${id}`)
-      .then((res) => {
-        setNotification('Room deleted successfully');
-        setDeleteModalOpen(false);
-        setRowToDelete(null);
-        fetchRooms(); // Assuming fetchRooms fetches the updated data
-      })
-      .catch((error) => {
-        console.error('Error deleting room:', error);
-      });
-  };
-
-  const handleCloseModal = () => {
-    setDeleteModalOpen(false);
-    setRowToDelete(null);
-  };
-
-  const fetchRooms = () => {
-    apiService
-      .get('/admin/room')
-      .then((response) => {
-        setTableData(response.data.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching rooms:', error);
-      });
-  };
-
-  const columns = [
-    {
-      name: 'Room Number',
-      selector: (row) => row.room_number,
-      sortable: true,
-    },
-    {
-      name: 'Room Type',
-      selector: (row) => row.room_type,
-      sortable: true,
-    },
-    {
-      name: 'Occupants',
-      selector: (row) => row.occupants,
-      sortable: true,
-    },
-    {
-      name: 'Status',
-      selector: (row) => row.occupant_status,
-      sortable: true,
-    },
-    {
-      name: 'Room Status',
-      selector: (row) => <StatusBadge status={row.room_status} />,
-      sortable: true,
-    },
-    {
-      name: 'Date',
-      selector: (row) => format(new Date(row.created_at), 'MMMM dd, yyyy'),
-      sortable: true,
-    },
-    {
-      name: 'Actions',
-      cell: (row) => (
-        <div className="flex space-x-2">
-          <button
-            onClick={() => handleUpdate(row)}
-            className="px-2 py-1 text-white bg-blue-500 rounded"
-          >
-            <HiOutlinePencil />
-          </button>
-          <button
-            onClick={() => handleDelete(row)}
-            className="px-2 py-1 text-white bg-red-500 rounded"
-          >
-            <HiOutlineTrash />
-          </button>
-        </div>
-      ),
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-    },
-  ];
-
-  const filteredItems = tableData.filter(
-    (item) =>
-      item.room_number.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.room_type.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.room_status.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.occupants.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.occupant_status.toLowerCase().includes(filterText.toLowerCase()) ||
-      format(new Date(item.created_at), 'MMMM dd, yyyy')
-        .toLowerCase()
-        .includes(filterText.toLowerCase())
-  );
+const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
 
   return (
     <AuthenticatedLayout user={auth.user}>
+
       <Head title="Tenant Room Reading" />
+      <Breadcrumb breadcrumb="home" />
 
-      <div className="h-full w-full m-4 flex justify-start items-start flex-wrap rounded-tl gap-4 overflow-y-scroll align-content-start bg-[#e5e7eb]">
-        <Breadcrumb breadcrumb="rooms" />
-
-        <div className="w-full pt-10">
-          <CardLayout
-            title="Room Data"
-            description="This is the room data for all tenants."
-          >
-            <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-[300px] p-2 border border-gray-300 rounded"
-                value={filterText}
-                onChange={(e) => setFilterText(e.target.value)}
-              />
+      <div className='grid gap-4 xl:grid-cols-2 2xl:grid-cols-3 mt-5'>
+        <div className='p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800'>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex-shrink-0">
+              <span className="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">{totalRooms}</span>
+              <h3 className="text-base font-light text-gray-500 dark:text-gray-400">Room Availability</h3>
             </div>
-            <div className="overflow-x-auto">
-              <DataTable
-                columns={columns}
-                data={filteredItems}
-                pagination
-                paginationComponentOptions={{
-                  rowsPerPageText: 'Rows per page:',
-                  rangeSeparatorText: 'of',
-                }}
-                noDataComponent="No records available."
-              />
+            <div className="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400">
+              12.5%
+              <HiArrowNarrowUp />
             </div>
-          </CardLayout>
+          </div>
+          <div className="flex flex-wrap justify-center bg-gray-100 min-h-screen">
+            {rooms.data.map(room => (
+              <RoomCard
+                key={room.id}
+                roomNumber={room.room_number}
+                roomType={room.room_type}
+                roomStatus={room.room_status}
+                roomAvailable={room.room_status === 'available' ? 'True' : 'False'}
+              />
+            ))}
+          </div>
         </div>
+        <CardLayout
+          title="Room Data"
+          description="This is the room data for all tenants."
+        >
+          <div className="mb-4">
+            {/* <input
+              type="text"
+              placeholder="Search"
+              className="w-[300px] p-2 border border-gray-300 rounded"
+              value={filterText}
+              onChange={(e) => setFilterText(e.target.value)}
+            /> */}
+          </div>
+          <div className="overflow-x-auto">
+            <RoomDataCard 
+              key={tenantRooms.id}
+              roomNumber={tenantRooms.room_number}
+              roomType={tenantRooms.room_type}
+              roomStatus={tenantRooms.room_status}
+              roomAvailable={tenantRooms.room_status === 'available' ? 'True' : 'False'}
+            />
+          </div>
+        </CardLayout>
       </div>
-
-      <DeleteModal
-        isOpen={deleteModalOpen}
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCloseModal}
-        title="Confirm Deletion"
-        message="Are you sure you want to delete this room?"
-      />
-
-      <Notification message={notification} onClose={() => setNotification(null)} />
-
-      <UpdateModal
-        isOpen={updateModalOpen}
-        onConfirm={handleConfirmUpdate}
-        onCancel={handleCloseModal}
-        row={rowToUpdate}
-      />
 
     </AuthenticatedLayout>
   );

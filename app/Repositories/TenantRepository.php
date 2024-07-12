@@ -79,4 +79,17 @@ class TenantRepository implements TenantContract {
                 ->paginate(10)
                 ->onEachSide(1);
     }
+
+    public function getAllTenantRoom() {
+        return $tenants = $this->model
+            ->with(['tenant', 'tenantRoom'])
+            ->whereHas('tenant', function($query) {
+                $query->where('usertype', '!=', 'admin');
+            })
+            ->join('users', 'tenants.tenant_id', '=', 'users.id')
+            ->join('rooms', 'tenants.tenant_room_id', '=', 'rooms.id')
+            ->select('tenants.tenant_room_id')
+            ->groupBy('tenants.tenant_room_id')
+            ->get();        
+    }
 }

@@ -8,4 +8,5 @@ interface TenantContract {
     public function searchTenantByName($searchData, $searchField, $searchDirection);
     public function searchTenantByRoomStatus($searchStatus, $searchField, $searchDirection);
     public function searchTenantByNameAndRoomStatus($searchData, $searchStatus, $searchField, $searchDirection);
+    public function getAllTenantRoom();
 }

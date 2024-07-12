@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Requests\RoomUpdateRequest;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+
 use Exception;
 
 class AdminController extends Controller

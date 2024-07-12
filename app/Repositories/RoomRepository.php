@@ -39,4 +39,15 @@ class RoomRepository implements RoomContract {
         return $room;
     }
 
+    public function countAllRooms() {
+        return $this->model->count();
+    }
+
+    public function countAllAvailableRooms() {
+        return $this->model
+            ->where('room_status', 'available')
+            ->where('occupant_status', 'incomplete')
+            ->count();
+    }
+
 }

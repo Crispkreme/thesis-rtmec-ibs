@@ -7,7 +7,6 @@ import Breadcrumb from '@/Components/Breadcrumb';
 import AreaChartComponent from '@/Components/Charts/AreaChartComponent';
 import BarChartComponent from '@/Components/Charts/BarChartComponent';
 import LineChartComponent from '@/Components/Charts/LineChartComponent';
-import { useReactTable } from '@tanstack/react-table';
 
 export default function Dashboard({ auth }) {
 
@@ -82,6 +81,7 @@ export default function Dashboard({ auth }) {
 
     return (
         <AuthenticatedLayout user={auth.user}>
+            
             <Head title="Dashboard" />
             <Breadcrumb breadcrumb="home" />
 
