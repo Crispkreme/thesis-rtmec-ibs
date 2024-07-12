@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Contracts\RoomContract;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\RoomResource;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class AdminRoomController extends Controller
 {
     protected $roomContract;
 

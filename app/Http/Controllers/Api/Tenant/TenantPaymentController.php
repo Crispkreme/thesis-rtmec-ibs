@@ -8,7 +8,7 @@ use App\Http\Resources\Admin\ReceiptResource;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class PaymentController extends Controller
+class TenantPaymentController extends Controller
 {   
     protected $receiptContract;
 

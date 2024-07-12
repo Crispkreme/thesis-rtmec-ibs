@@ -31,10 +31,10 @@ export default function Authenticated({ user, header, children }) {
 
     const adminLinks = [
         { href: route('admin.dashboard'), icon: HiOutlineHome },
-        { href: route('admin.room'), icon: HiOutlineOfficeBuilding },
-        { href: route('admin.tenant'), icon: HiOutlineUserGroup },
-        { href: route('admin.reading'), icon: HiOutlineCalculator },
-        { href: route('admin.reading'), icon: HiOutlinePresentationChartBar },
+        { href: route('api.admin.room'), icon: HiOutlineOfficeBuilding },
+        { href: route('api.admin.tenant'), icon: HiOutlineUserGroup },
+        { href: route('api.admin.reading'), icon: HiOutlineCalculator },
+        { href: route('api.admin.reading'), icon: HiOutlinePresentationChartBar },
         { href: "#", icon: HiOutlineCreditCard },
         { href: "#", icon: HiOutlineCog },
         { href: "#", icon: HiLogout }

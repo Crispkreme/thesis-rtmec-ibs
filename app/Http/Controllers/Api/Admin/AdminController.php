@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Contracts\RoomContract;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return Inertia('Admin/Dashboard');
     }
 
     public function addRoom(RoomUpdateRequest $request) {

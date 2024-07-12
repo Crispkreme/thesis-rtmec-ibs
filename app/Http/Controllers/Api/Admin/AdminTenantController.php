@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Contracts\UserContract;
 use App\Contracts\TenantContract;
@@ -9,7 +9,7 @@ use App\Http\Resources\Admin\TenantResource;
 use App\Http\Resources\Admin\UserResource;
 use Illuminate\Http\Request;
 
-class TenantController extends Controller
+class AdminTenantController extends Controller
 {
     protected $tenantContract;
     protected $userContract;

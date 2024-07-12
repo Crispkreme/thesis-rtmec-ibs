@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contracts\ReceiptContract;
 
-class ReceiptController extends Controller
+class AdminReceiptController extends Controller
 {
     protected $receiptContract;
 

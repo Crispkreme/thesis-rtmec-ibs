@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contracts\ReadingContract;
 use App\Http\Resources\Admin\ReadingResource;
 
-class ReadingController extends Controller
+class AdminReadingController extends Controller
 {
     protected $readingContract;
 

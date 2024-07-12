@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\ReadingController;
-use App\Http\Controllers\Admin\RoomController;
-use App\Http\Controllers\Admin\TenantController;
-use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,33 +12,6 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
-
-
-// ADMIN GROUP ROUTES
-Route::middleware(['adminChecker', 'auth', 'verified'])
-->prefix('admin')
-->as('admin.')
-->group(function() {
-
-    // FOR DASHBOARD
-    Route::get('dashboard', function () {
-        return Inertia::render('Admin/Dashboard');
-    })->name('dashboard');
-
-    // FOR ROOMS
-    Route::get('room', [RoomController::class, 'index'])->name('room');
-
-    // FOR TENANTS
-    Route::get('tenant', [TenantController::class, 'index'])->name('tenant');
-    Route::get('edit/{id}', [TenantController::class, 'edit'])->name('tenant.edit');
-    Route::get('destroy/{id}', [TenantController::class, 'destroy'])->name('tenant.destroy');
-
-    // FOR READINGS
-    Route::get('reading', [ReadingController::class, 'index'])->name('reading');
-
-    // FOR RECEIPT
-    Route::get('payment', [ReceiptController::class, 'index'])->name('payment');
 });
 
 Route::middleware('auth')->group(function () {
