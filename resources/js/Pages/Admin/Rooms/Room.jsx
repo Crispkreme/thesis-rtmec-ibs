@@ -53,13 +53,16 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
             /> */}
           </div>
           <div className="overflow-x-auto">
-            <RoomDataCard 
-              key={tenantRooms.id}
-              roomNumber={tenantRooms.room_number}
-              roomType={tenantRooms.room_type}
-              roomStatus={tenantRooms.room_status}
-              roomAvailable={tenantRooms.room_status === 'available' ? 'True' : 'False'}
-            />
+            {tenantRooms.data.map(tenantRoom => (
+              <RoomDataCard 
+                key={tenantRoom.id}
+                tenantRoomNumber={tenantRoom.tenant_room_number}
+                tenantRoomType={tenantRoom.tenant_room_type}
+                tenantRoomStatus={tenantRoom.tenant_room_status}
+                roomAvailable={tenantRoom.tenant_room_status === 'available' ? 'True' : 'False'}
+                className='mb-2'
+              />
+            ))}
           </div>
         </CardLayout>
       </div>
