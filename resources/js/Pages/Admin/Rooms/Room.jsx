@@ -4,21 +4,28 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import RoomCard from '@/Components/RoomCard';
 import Breadcrumb from '@/Components/Breadcrumb';
 import CardLayout from '@/Components/CardLayout';
-import { HiArrowNarrowUp } from 'react-icons/hi';
 import RoomDataCard from '@/Components/RoomDataCard';
+import { HiArrowNarrowUp } from 'react-icons/hi';
+import Modal from '@/Components/Modal';
 
 const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
-  
   const [filterText, setFilterText] = useState('');
+  const [viewModalOpen, setViewModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
-  const filteredTenantRooms = tenantRooms.data.filter(tenantRoom =>
-    tenantRoom.tenant_room_number.toLowerCase().includes(filterText.toLowerCase())
-  );
+  const handleViewDetails = (room) => {
+    setSelectedRoom(room);
+    setViewModalOpen(true);
+  };
+
+  const handleUpdateDetails = (room) => {
+    setSelectedRoom(room);
+    setUpdateModalOpen(true);
+  };
 
   return (
-
     <AuthenticatedLayout user={auth.user}>
-
       <Head title="Tenant Room Reading" />
       <Breadcrumb breadcrumb="home" />
 
@@ -42,6 +49,9 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
                 roomType={room.room_type}
                 roomStatus={room.room_status}
                 roomAvailable={room.room_status === 'available' ? 'True' : 'False'}
+                cardColor="bg-gray-300"
+                onViewDetails={() => handleViewDetails(room)}
+                onUpdateDetails={() => handleUpdateDetails(room)}
               />
             ))}
           </div>
@@ -71,7 +81,7 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
             </svg>
           </div>
           <div className="overflow-x-auto">
-            {filteredTenantRooms.map(tenantRoom => (
+            {tenantRooms.data.map(tenantRoom => (
               <RoomDataCard 
                 key={tenantRoom.id}
                 tenantRoomNumber={tenantRoom.tenant_room_number}
@@ -84,6 +94,175 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           </div>
         </CardLayout>
       </div>
+
+      {viewModalOpen && (
+        <Modal
+          isOpen={viewModalOpen}
+          onClose={() => setViewModalOpen(false)}
+          modalTitle='Room Details'
+        >
+          <form className="p-4 md:p-5">
+            <div className="grid gap-4 mb-4 grid-cols-2">
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_number"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Room Number
+                </label>
+                <input
+                  type="text"
+                  name="room_number"
+                  id="room_number"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_number}
+                  readOnly
+                />
+              </div>
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_type"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Room Type
+                </label>
+                <select
+                  id="room_type"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_type}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_type}</option>
+                </select>
+              </div>
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_status"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Status
+                </label>
+                <select
+                  id="room_status"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_status}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_status}</option>
+                </select>
+              </div>
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_available"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Available
+                </label>
+                <select
+                  id="room_available"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_status === 'available' ? 'True' : 'False'}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_status === 'available' ? 'True' : 'False'}</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </Modal>
+      )}
+
+      {updateModalOpen && (
+        <Modal
+          isOpen={updateModalOpen}
+          onClose={() => setUpdateModalOpen(false)}
+          modalTitle='Edit Room Details'
+        >
+          <form className="p-4 md:p-5">
+            <div className="grid gap-4 mb-4 grid-cols-2">
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_number"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Tenant Name
+                </label>
+                <select
+                  id="room_type"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  readOnly
+                >
+                  <option></option>
+                </select>
+              </div>
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_number"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Room Number
+                </label>
+                <input
+                  type="text"
+                  name="room_number"
+                  id="room_number"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_number}
+                  readOnly
+                />
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <label
+                  htmlFor="room_type"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Room Type
+                </label>
+                <select
+                  id="room_type"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_type}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_type}</option>
+                </select>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <label
+                  htmlFor="room_status"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Status
+                </label>
+                <select
+                  id="room_status"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_status}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_status}</option>
+                </select>
+              </div>
+              <div className="col-span-2">
+                <label
+                  htmlFor="room_available"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Available
+                </label>
+                <select
+                  id="room_available"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={selectedRoom.room_status === 'available' ? 'True' : 'False'}
+                  readOnly
+                >
+                  <option>{selectedRoom.room_status === 'available' ? 'True' : 'False'}</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </Modal>
+      )}
 
     </AuthenticatedLayout>
   );
