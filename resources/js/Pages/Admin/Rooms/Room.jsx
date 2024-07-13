@@ -8,8 +8,15 @@ import { HiArrowNarrowUp } from 'react-icons/hi';
 import RoomDataCard from '@/Components/RoomDataCard';
 
 const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
+  
+  const [filterText, setFilterText] = useState('');
+
+  const filteredTenantRooms = tenantRooms.data.filter(tenantRoom =>
+    tenantRoom.tenant_room_number.toLowerCase().includes(filterText.toLowerCase())
+  );
 
   return (
+
     <AuthenticatedLayout user={auth.user}>
 
       <Head title="Tenant Room Reading" />
@@ -43,17 +50,28 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           title="Room Data"
           description="This is the room data for all tenants."
         >
-          <div className="mb-4">
-            {/* <input
+          <div className="mb-4 relative">
+            <input
               type="text"
               placeholder="Search"
-              className="w-[300px] p-2 border border-gray-300 rounded"
+              className="w-full p-2 pl-10 border border-gray-300 rounded"
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
-            /> */}
+            />
+            <svg
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              width="20"
+              height="20"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 4a6 6 0 014.58 10.19l5.29 5.3a1 1 0 01-1.42 1.42l-5.3-5.29A6 6 0 118 4z" />
+            </svg>
           </div>
           <div className="overflow-x-auto">
-            {tenantRooms.data.map(tenantRoom => (
+            {filteredTenantRooms.map(tenantRoom => (
               <RoomDataCard 
                 key={tenantRoom.id}
                 tenantRoomNumber={tenantRoom.tenant_room_number}
