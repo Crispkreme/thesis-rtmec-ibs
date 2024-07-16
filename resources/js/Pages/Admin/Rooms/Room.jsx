@@ -13,6 +13,7 @@ import {
   HiOutlineClipboardList,
   HiArrowNarrowUp 
 } from 'react-icons/hi';
+import apiService from '@/Services/apiServices';
 
 const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
   const [filterText, setFilterText] = useState('');
@@ -37,7 +38,14 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
   };
 
   const handleTenantBillSubmit = () => {
-    alert('handleTenantBillSubmit');
+    apiService
+      .get("/admin/list/payment")
+      .then(() => {
+        alert('handleTenantBillSubmit');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const handleUpdateRoomSubmit = () => {
@@ -127,8 +135,6 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           onClose={() => setViewModalOpen(false)}
           modalTitle='Room Details'
           modalIcon={<HiOutlineSearch className='mr-2'/>}
-          onClickTrigger={handleViewRoomSubmit}
-          buttonTitle=""
         >
           <form className="p-4 md:p-5">
             <div className="grid gap-4 mb-4 grid-cols-2">
@@ -207,7 +213,13 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           onClose={() => setUpdateModalOpen(false)}
           modalTitle='Edit Room Details'
           modalIcon={<HiOutlinePencil className='mr-2'/>}
-          button={<button type="submit" className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={handleUpdateRoomSubmit}>Update Tenant Details</button>}
+          button={
+            <button 
+              type="submit" 
+              className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" 
+              onClick={handleUpdateRoomSubmit}
+            >Update Tenant Details</button>
+          }
         >
           <form class="alt bbt bbz bcv cip cpa">
             <div className="grid gap-4 mb-4 grid-cols-2">
@@ -301,7 +313,13 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           onClose={() => setTenantBillModalOpen(false)}
           modalTitle='Create Tenant Bill'
           modalIcon={<HiOutlineClipboardList className='mr-2'/>}
-          button={<button type="submit" className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={handleTenantBillSubmit}>Create Tenant Bill</button>}
+          button={
+            <button 
+              type="submit" 
+              className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" 
+              onClick={handleTenantBillSubmit}
+            >Create Tenant Bill</button>
+          }
         >
           <p class="text-sm text-gray-500"> Are you sure you want to add <span class="font-bold">Tenant Bill</span>?</p>
         </Modal>

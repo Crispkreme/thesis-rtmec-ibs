@@ -36,10 +36,4 @@ class TenantPaymentController extends Controller
             'unpaidReceipts' => ReceiptResource::collection($unpaidReceipts),
         ]);
     }
-
-    public function listPayment()
-    {
-        dd('saaaaaa');
-        return Inertia('Tenant/Payments/ListPayment');
-    }
 }
