@@ -36,5 +36,4 @@ class TenantPaymentController extends Controller
             'unpaidReceipts' => ReceiptResource::collection($unpaidReceipts),
         ]);
     }
-
 }

@@ -46,9 +46,6 @@ const Payment = ({ auth, receipts, paidReceipts, unpaidReceipts }) => {
     const paidReceiptData = paidReceipts.data;
     const unpaidReceiptData = unpaidReceipts.data;
 
-    console.log("paidReceiptData", paidReceiptData);
-    console.log("unpaidReceiptData", unpaidReceiptData);
-
     const [filterText, setFilterText] = useState('');
 
     const filteredItems = data.filter(
