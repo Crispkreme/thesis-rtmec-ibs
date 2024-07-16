@@ -50,6 +50,7 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
 
   return (
     <AuthenticatedLayout user={auth.user}>
+      
       <Head title="Tenant Room Reading" />
       <Breadcrumb breadcrumb="home" />
 
@@ -208,7 +209,7 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           modalIcon={<HiOutlinePencil className='mr-2'/>}
           button={<button type="submit" className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={handleUpdateRoomSubmit}>Update Tenant Details</button>}
         >
-          <form className="p-4 md:p-5">
+          <form class="alt bbt bbz bcv cip cpa">
             <div className="grid gap-4 mb-4 grid-cols-2">
               <div className="col-span-2">
                 <label
