@@ -5,13 +5,20 @@ import RoomCard from '@/Components/RoomCard';
 import Breadcrumb from '@/Components/Breadcrumb';
 import CardLayout from '@/Components/CardLayout';
 import RoomDataCard from '@/Components/RoomDataCard';
-import { HiArrowNarrowUp } from 'react-icons/hi';
 import Modal from '@/Components/Modal';
+
+import { 
+  HiOutlineSearch,
+  HiOutlinePencil,
+  HiOutlineClipboardList,
+  HiArrowNarrowUp 
+} from 'react-icons/hi';
 
 const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
   const [filterText, setFilterText] = useState('');
   const [viewModalOpen, setViewModalOpen] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [tenantBillModalOpen, setTenantBillModalOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
 
   const handleViewDetails = (room) => {
@@ -23,6 +30,23 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
     setSelectedRoom(room);
     setUpdateModalOpen(true);
   };
+
+  const handleTenantBillDetails = (room) => {
+    setSelectedRoom(room);
+    setTenantBillModalOpen(true);
+  };
+
+  const handleTenantBillSubmit = () => {
+    alert('handleTenantBillSubmit');
+  }
+
+  const handleUpdateRoomSubmit = () => {
+    alert('handleTenantBillSubmit');
+  }
+
+  const handleViewRoomSubmit = () => {
+    alert('handleTenantBillSubmit');
+  }
 
   return (
     <AuthenticatedLayout user={auth.user}>
@@ -52,6 +76,7 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
                 cardColor="bg-gray-300"
                 onViewDetails={() => handleViewDetails(room)}
                 onUpdateDetails={() => handleUpdateDetails(room)}
+                onTenantBillDetails={() => handleTenantBillDetails(room)}
               />
             ))}
           </div>
@@ -100,6 +125,9 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           isOpen={viewModalOpen}
           onClose={() => setViewModalOpen(false)}
           modalTitle='Room Details'
+          modalIcon={<HiOutlineSearch className='mr-2'/>}
+          onClickTrigger={handleViewRoomSubmit}
+          buttonTitle=""
         >
           <form className="p-4 md:p-5">
             <div className="grid gap-4 mb-4 grid-cols-2">
@@ -177,6 +205,8 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
           isOpen={updateModalOpen}
           onClose={() => setUpdateModalOpen(false)}
           modalTitle='Edit Room Details'
+          modalIcon={<HiOutlinePencil className='mr-2'/>}
+          button={<button type="submit" className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={handleUpdateRoomSubmit}>Update Tenant Details</button>}
         >
           <form className="p-4 md:p-5">
             <div className="grid gap-4 mb-4 grid-cols-2">
@@ -261,6 +291,18 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
               </div>
             </div>
           </form>
+        </Modal>
+      )}
+
+      {tenantBillModalOpen && (
+        <Modal
+          isOpen={tenantBillModalOpen}
+          onClose={() => setTenantBillModalOpen(false)}
+          modalTitle='Create Tenant Bill'
+          modalIcon={<HiOutlineClipboardList className='mr-2'/>}
+          button={<button type="submit" className="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white-500 text-base font-medium text-dark hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={handleTenantBillSubmit}>Create Tenant Bill</button>}
+        >
+          <p class="text-sm text-gray-500"> Are you sure you want to add <span class="font-bold">Tenant Bill</span>?</p>
         </Modal>
       )}
 

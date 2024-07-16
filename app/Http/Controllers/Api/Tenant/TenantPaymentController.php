@@ -37,4 +37,9 @@ class TenantPaymentController extends Controller
         ]);
     }
 
+    public function listPayment()
+    {
+        dd('saaaaaa');
+        return Inertia('Tenant/Payments/ListPayment');
+    }
 }

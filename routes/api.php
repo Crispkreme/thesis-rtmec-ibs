@@ -27,6 +27,11 @@ Route::middleware(['TenantChecker', 'auth', 'verified', 'web'])
 
     // PAYMENT
     Route::get('/payment', [TenantPaymentController::class, 'payment'])->name('payment');
+
+    // PAYPAL
+    Route::get('/sample/payment/success', [TenantPaymentController::class, 'success'])->name('sample.payment.success');
+    Route::get('/sample/payment/cancel', [TenantPaymentController::class, 'cancel'])->name('sample.payment.cancel');
+
 });
 
 Route::middleware(['adminChecker', 'auth', 'verified', 'web'])
@@ -39,6 +44,7 @@ Route::middleware(['adminChecker', 'auth', 'verified', 'web'])
 
     // PAYMENT
     Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
+    Route::get('/list/payment', [TenantPaymentController::class, 'listPayment'])->name('list.payment');
 
     // ROOM
     Route::get('room', [AdminRoomController::class, 'index'])->name('room');

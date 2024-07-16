@@ -35,14 +35,14 @@ export default function Authenticated({ user, header, children }) {
         { href: route('api.admin.reading'), icon: HiOutlinePresentationChartBar },
         { href: "#", icon: HiOutlineCreditCard },
         { href: "#", icon: HiOutlineCog },
-        { href: "#", icon: HiLogout }
+        { href: route('logout'), icon: HiLogout }
     ];
 
     const userLinks = [
         { href: route('api.tenant.index'), icon: HiOutlineHome },
         { href: route('api.tenant.payment'), icon: HiOutlineCreditCard },
         { href: "#", icon: HiOutlineCog },
-        { href: "#", icon: HiLogout }
+        { href: route('logout'), icon: HiLogout }
     ];
 
     return (
