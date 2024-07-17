@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class AdminPaymentController extends Controller
 {
-    public function listPayment()
+    public function listPayment(Request $request, $id)
     {
-        return Inertia('Admin/Payments/AdminListPayment');
+        return Inertia::render('Admin/Payments/AdminListPayment');
     }
 }

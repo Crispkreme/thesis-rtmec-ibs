@@ -44,7 +44,7 @@ Route::middleware(['adminChecker', 'auth', 'verified', 'web'])
 
     // PAYMENT
     Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
-    Route::get('/list/payment', [AdminPaymentController::class, 'listPayment'])->name('list.payment');
+    Route::get('/list/payment/{roomId}', [AdminPaymentController::class, 'listPayment'])->name('list.payment');
 
     // ROOM
     Route::get('room', [AdminRoomController::class, 'index'])->name('room');

@@ -39,7 +39,7 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
 
   const handleTenantBillSubmit = () => {
     apiService
-      .get("/admin/list/payment")
+      .get(`/admin/list/payment/${selectedRoom.id}`)
       .then(() => {
         alert('handleTenantBillSubmit');
       })
@@ -321,7 +321,8 @@ const Room = ({ auth, rooms, totalRooms, tenantRooms }) => {
             >Create Tenant Bill</button>
           }
         >
-          <p class="text-sm text-gray-500"> Are you sure you want to add <span class="font-bold">Tenant Bill</span>?</p>
+          <input type="hidden" value={selectedRoom.id}/>
+          <p class="text-sm text-gray-500"> Are you sure you want to add Tenant Bill for <span class="font-bold">{selectedRoom.room_number}</span>?</p>
         </Modal>
       )}
 
